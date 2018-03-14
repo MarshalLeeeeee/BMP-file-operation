@@ -116,10 +116,6 @@ int bmp_mask( char* input_bmp_filename, char* output_bmp_filename,
 			img_data[ i*(img_width*num_colors+padding) + j*num_colors + 2 + data_offset] = red;
 			img_data[ i*(img_width*num_colors+padding) + j*num_colors + 1 + data_offset] = green;
 			img_data[ i*(img_width*num_colors+padding) + j*num_colors + 0 + data_offset] = blue;
-
-			//pixel_data[ i*(img_width*num_colors+padding) + i*num_colors + 2] = red;
-			//pixel_data[ i*(img_width*num_colors+padding) + i*num_colors + 1] = green;
-			//pixel_data[ i*(img_width*num_colors+padding) + i*num_colors + 0] = blue;
 		}
 	}
 	
@@ -183,63 +179,6 @@ int bmp_collage( char* bmp_input1, char* bmp_input2, char* bmp_result, int x_off
   	printf("%s Should padding: %d\n",bmp_result, padding);
   	printf("%s Should data_size: %d\n",bmp_result, data_size);
   	*/
-/*
-  if(x_offset + img_width2 <= img_width1 && y_offset + img_height2 <= img_height1)
-  //if(1)
-  {
-  	for(int j = x_offset; j < x_offset + img_width2; j++)
-	{
-		for(int i = y_offset; i < y_offset + img_height2; i++)
-		{
-			//img_data1[ i*(img_width1*num_colors1+padding1) + j*num_colors1 + 2 + data_offset1] = 0;
-			//img_data1[ i*(img_width1*num_colors1+padding1) + j*num_colors1 + 1 + data_offset1] = 0;
-			//img_data1[ i*(img_width1*num_colors1+padding1) + j*num_colors1 + 0 + data_offset1] = 0;
-
-			img_data1[ i*(img_width1*num_colors1+padding1) + j*num_colors1 + 2 + data_offset1] = img_data2[ (i-y_offset)*(img_width2*num_colors2+padding2) + (j-x_offset)*num_colors2 + 2 + data_offset2];
-			img_data1[ i*(img_width1*num_colors1+padding1) + j*num_colors1 + 1 + data_offset1] = img_data2[ (i-y_offset)*(img_width2*num_colors2+padding2) + (j-x_offset)*num_colors2 + 1 + data_offset2];
-			img_data1[ i*(img_width1*num_colors1+padding1) + j*num_colors1 + 0 + data_offset1] = img_data2[ (i-y_offset)*(img_width2*num_colors2+padding2) + (j-x_offset)*num_colors2 + 0 + data_offset2];
-			//pixel_data[ i*(img_width*num_colors+padding) + i*num_colors + 2] = red;
-			//pixel_data[ i*(img_width*num_colors+padding) + i*num_colors + 1] = green;
-			//pixel_data[ i*(img_width*num_colors+padding) + i*num_colors + 0] = blue;
-		}
-	}
-	FILE *fout=fopen(bmp_result, "wb");
-	fwrite(img_data1, sizeof(char), data_size1, fout);
-  }
-*/  
-  //else
-  //{
-  	/*
-  	if(x_offset < 0)
-  	{
-  		;
-  	}
-  	if(y_offset < 0)
-  	{
-  		;
-  	}
-  	*/
-/*
-  	unsigned int img_left = MIN(0,x_offset);
-  	unsigned int img_down = MIN(0,y_offset);
-  	unsigned int img_right = MAX(img_width1, x_offset+img_width2);
-  	unsigned int img_up = MAX(img_height1, y_offset+img_height2);
-  	unsigned int img_width = img_right - img_left;
-  	unsigned int img_height = img_up - img_down;
-  	unsigned int img_x_offset = MAX(0,-x_offset);
-  	unsigned int img_y_offset = MAX(0,-y_offset);
-
-  	unsigned int data_size = 54 + img_width * img_height;
-  	unsigned char* img_data = (unsigned char*)malloc(data_size1);
-  	unsigned int num_colors = num_colors1;
-  	unsigned int data_offset = data_offset1;
-  	unsigned int padding = (4 - (img_width*num_colors) % 4) % 4;
-  */
-  	/*
-  	fread(img_data+0x12, 4, 1, &img_width);
-  	fread(img_data+0x16, 4, 1, &img_height);
-  	fread(img_data+0x02, 4, 1, &data_size);
-	*/
 
   	for(unsigned int i = 0; i < data_offset1; i++)
   	{
@@ -298,8 +237,6 @@ int bmp_collage( char* bmp_input1, char* bmp_input2, char* bmp_result, int x_off
 
   	FILE *fout=fopen(bmp_result, "wb");
   	fwrite(img_data, sizeof(char), data_size, fout);
-  //}
-  
   
   // TO HERE!
       
